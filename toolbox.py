@@ -32,6 +32,8 @@ def prntSec2HMS(seconds):
 # Note: Include related conditions associated with the discriminant
 # ------------------------------------------------------------------------------
 def quadratic(a, b, c):
+		print("a =",a,",  b =",b,",  c =",c)
+		print("Equation: ",a,"* x**2","+",b,"* x", "+",c,"= 0")
 		import math
 		d = b**2 - 4*a*c		# compute the discriminant
 		if d < 0:
