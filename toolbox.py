@@ -25,6 +25,36 @@ def prntSec2HMS(seconds):
 		print('Elapsed Time (HH:MM:SS.ss): {:02d}:{:02d}:{:00.2f}'.format(elapsedHours, elapsedMinutes, remainingSeconds))
 
 # ------------------------------------------------------------------------------
+# Function name: YN2Bool(YNFlag)
+# Purpose: Convert "Yes" / "No" to 1 / 0
+# Author: Donald Murray
+# Date Added: 2018-01-29
+# Note: YNFlag values not in ("Yes", "No") will return a dot
+# ------------------------------------------------------------------------------
+def YN2Bool(YNFlag):
+		if YNFlag == "Yes":
+			return "1"
+		elif YNFlag == "No":
+			return "0"
+		else:
+			return "."
+
+# ------------------------------------------------------------------------------
+# Function name: Bool2YN(Bool)
+# Purpose: Convert 1 / 0 to "Yes" / "No"
+# Author: Donald Murray
+# Date Added: 2018-03-01
+#	Note: Bool values not in (1, 0) will return a zero length string
+# ------------------------------------------------------------------------------
+def Bool2YN(Bool):
+		if Bool == 1:
+			return "Yes"
+		elif Bool == 0:
+			return "No"
+		else:
+			return ""
+
+# ------------------------------------------------------------------------------
 # Function name: quadratic(a, b, c)
 # Purpose: Compute and print any real roots of a quadratic equation
 # Author: Donald Murray
