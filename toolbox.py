@@ -220,7 +220,8 @@ def upload_to_aws(local_file, bucket, s3_file):
 	import boto3
 	from botocore.exceptions import NoCredentialsError
 
-	s3 = boto3.client('s3', aws_access_key_id='AKIAIKJSAX5L2WN5UZVA', aws_secret_access_key='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')
+	session = boto3.Session(profile_name='default')
+	s3 = session.client('s3')
 
 	try:
 		s3.upload_file(local_file, bucket, s3_file)
