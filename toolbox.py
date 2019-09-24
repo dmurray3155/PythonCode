@@ -213,23 +213,3 @@ class Cartesian(object):
 			return float((y - float(yintercept))) / float(slope)
 		else:
 			raise Exception('Can not solve on a horizontal line')
-
-#	Function to upload to AWS S3
-#	Source: https://medium.com/bilesanmiahmad/how-to-upload-a-file-to-amazon-s3-in-python-68757a1867c6
-def upload_to_aws(local_file, bucket, s3_file):
-	import boto3
-	from botocore.exceptions import NoCredentialsError
-
-	session = boto3.Session(profile_name='default')
-	s3 = session.client('s3')
-
-	try:
-		s3.upload_file(local_file, bucket, s3_file)
-		print("Upload Successful")
-		return True
-	except FileNotFoundError:
-		print("The file was not found")
-		return False
-	except NoCredentialsError:
-		print("Credentials not available")
-		return False
