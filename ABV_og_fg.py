@@ -13,10 +13,10 @@
 #						0.017.
 # --------------------------------------------------------------------------------------------------
 
-locFldr = 'C:/Users/Donald Murray/Documents/GitHub/PythonCode'
+locPyth = 'C:/Users/Donald Murray/Documents/GitHub/PythonCode'
 
 from sys import path
-path.append("C:/Users/Donald Murray/Documents/GitHub/PythonCode")
+path.append(locPyth)
 from toolbox import alcByVol
 
 #	Set up for arguments of og and fg on command-line
@@ -27,6 +27,5 @@ import sys
 
 #	Compute final alcohol by volume (abv) from og and fg (from my toolbox)
 abv = alcByVol(sys.argv[1], sys.argv[2])
-print("ABV: {0:4.1f} percent".format(abv))
-print('og: ', sys.argv[1])
-print('fg: ', sys.argv[2])
+print("     og:", sys.argv[1], "| fg:", sys.argv[2])
+print("     ABV: {0:4.1f} percent".format(abv))
