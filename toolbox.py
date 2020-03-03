@@ -213,3 +213,26 @@ class Cartesian(object):
 			return float((y - float(yintercept))) / float(slope)
 		else:
 			raise Exception('Can not solve on a horizontal line')
+
+# ------------------------------------------------------------------------------
+# Function name: alcByVol(og, fg)
+# Purpose: Compute alcohol by volume (abv) from hydrometer measures of original
+#					 gravity and final gravity.
+# Author: Donald Murray
+# Date Added: 2020-03-02
+# Note: The source csv file should be in the same folder as the python script.
+# ------------------------------------------------------------------------------
+def alcByVol(og, fg):
+	# Set up hash of itemid and itemtype
+	import csv 
+	hashCSV = './ABV_og_fg.csv'
+	alcbv = {}
+	dictcsv = csv.reader(open(hashCSV, 'r'))
+	for row in dictcsv:
+		i, sg, a = row
+		alcbv[sg] = a
+
+	#	Compute final alcohol by volume (abv) from og and fg
+	abv = float(alcbv[og]) - float(alcbv[fg])
+	return abv
+
