@@ -16,9 +16,6 @@ data = athena_utils.query_results(query=query)
 print("Result Data: ")
 # print(data)
 
-s3 = session.resource('s3')
-athena_utils.delete_output(s3)  # This is for cleaning up the query result once data is fetched.
-
 # This is modeled after noble_gases.py under C:\Users\DMAdmin\python\Rich
 # This is better than a simple print(data)
 
@@ -36,9 +33,12 @@ table.add_column("Tests / Week", style="blue", justify="right")
 for datum in data:
     table.add_row(
         datum["year"],
-        str(datum["date_ref"]),
-        str(datum["week_num"]),
-        datum["total_counts_per_week"],
+        datum["date_ref"],
+        datum["week_num"],
+        format(int(datum["total_counts_per_week"]), ","),
     )
 
 console.print(table)
+
+s3 = session.resource('s3')
+athena_utils.delete_output(s3)  # This is for cleaning up the query result once data is fetched.
